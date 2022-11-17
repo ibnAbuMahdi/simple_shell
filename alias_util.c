@@ -43,7 +43,6 @@ void handle_alias(char **args)
 		: open("/root/.tcshrc", O_RDWR);
 	aliases = malloc(sizeof(char *) * als_s + 1);
 	fill_alias(aliases, fd);
-	printf("%lu\n", count(aliases));
 	count(args) == 1 ? print_a(aliases) : handle_args(aliases, args, which);
 }
 
