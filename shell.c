@@ -8,6 +8,8 @@
 #include <sys/stat.h>
 /**
  * main - driver code
+ * @ac: args count
+ * @av: args
  * Return: Always 0.
  */
 
@@ -15,7 +17,7 @@ int main(int ac, char **av)
 {
 	size_t n;
 	char **argv, *line;
-	
+
 	if (ac > 3)
 	{
 		write(STDERR_FILENO, "Usage: ./shell cmd [filename]", 29);
@@ -37,6 +39,7 @@ int main(int ac, char **av)
 /**
  * process_cmds - central commands processing center
  * @line: the cmds string with only \n removed
+ * @prog: prog name
  */
 
 void process_cmds(char *line, char *prog)
@@ -77,6 +80,7 @@ void process_cmds(char *line, char *prog)
  * exec_cmd - executes the command cmd with args
  * @cmd: basically args[0]
  * @args: the args
+ * @prog: prog name
  * Return: 1 on success and 0 o.w.
  */
 
