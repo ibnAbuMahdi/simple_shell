@@ -35,14 +35,9 @@ void _setenv(general_t *info, char **args)
 	char *temp, *name, *aux;
 	(void) info;
 
+	if (!name || count(args) != 3)
+		return;
 	name = args[1];
-	if (!name || count(args) > 3)
-		return;
-	if (count(args) == 2)
-	{
-		printenv();
-		return;
-	}
 	while (environ[i])
 	{
 		temp = _strdup(environ[i]);
