@@ -55,7 +55,7 @@ void _setenv(general_t *info, char **args)
 	}
 
 	if (_putenv(args))
-		printenv();
+		return;
 }
 
 /**
