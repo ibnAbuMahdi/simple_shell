@@ -48,6 +48,7 @@ void _setenv(general_t *info, char **args)
 			_strcat(aux, "=");
 			_strcat(aux, args[2]);
 			environ[i] = aux;
+			return;
 		}
 		free(temp);
 		i++;
