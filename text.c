@@ -49,9 +49,8 @@ char *read_prompt()
  **/
 void start_prompt(general_t *info)
 {
-	char *buff;
-	char **arguments;
-	char *path;
+	char **arguments, **args, *buff, *path;
+	size_t i;
 
 	signal(SIGINT, sigintHandler);
 	while (1)
@@ -73,14 +72,22 @@ void start_prompt(general_t *info)
 		info->n_commands++;
 		if (buff[0] != '\n')
 		{
-			arguments = split_words(buff, " \t\n");
+			i = 0;
+			args = split_words(buff, ";");
+			while (args[i])
+			{
+				arguments = split_words(args[i], " \t\n");
+			
+				info->arguments = arguments;
+				info->buffer = args[i];
+				analyze_patterns(info, arguments);
+				analyze(arguments, info, args[i]);
 
-			info->arguments = arguments;
-			info->buffer = buff;
-			analyze_patterns(info, arguments);
-			analyze(arguments, info, buff);
+				free_memory_pp((void *) arguments);
+				i++;
+			}
+			free_memory_pp((void *) args);
 
-			free_memory_pp((void *) arguments);
 		}
 
 		free_memory_p((void *) buff);
