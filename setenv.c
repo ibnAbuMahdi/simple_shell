@@ -38,6 +38,8 @@ void _setenv(general_t *info, char **args)
 	name = args[1];
 	if (!name || count(args) > 3)
 		return;
+	if (count(args) == 2)
+		printenv();
 	while (environ[i])
 	{
 		temp = _strdup(environ[i]);
