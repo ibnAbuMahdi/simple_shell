@@ -35,9 +35,9 @@ void _setenv(general_t *info, char **args)
 	char *temp, *name, *aux;
 	(void) info;
 
+	name = args[1];
 	if (!name || count(args) != 3)
 		return;
-	name = args[1];
 	while (environ[i])
 	{
 		temp = _strdup(environ[i]);
