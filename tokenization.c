@@ -116,8 +116,8 @@ size_t count(char **args)
 
 	if (!args)
 		return (i);
-	while (args[i++])
-		;
+	while (args[i])
+		i++;
 	return (i);
 }
 
