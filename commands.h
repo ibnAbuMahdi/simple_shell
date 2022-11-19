@@ -28,7 +28,8 @@ char *_getenv(const char *name);
 char *which(char *filename, general_t *info);
 void is_current_path(char *path, general_t *info);
 void get_full_env(void);
-void printenv(void);
+/*void printenv(void);
+*/
 
 /* execute.c */
 void execute(char *commands, char **arguments, general_t *info, char *buff);
