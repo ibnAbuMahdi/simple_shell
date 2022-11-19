@@ -48,14 +48,14 @@ void _setenv(general_t *info, char **args)
 			_strcat(aux, "=");
 			_strcat(aux, args[2]);
 			environ[i] = aux;
-			return;
+			printenv();
 		}
 		free(temp);
 		i++;
 	}
 
 	if (_putenv(args))
-		return;
+		printenv();
 }
 
 /**
