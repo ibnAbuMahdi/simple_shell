@@ -10,10 +10,8 @@ void free_memory_p(void *ptr)
 	if (ptr != NULL)
 	{
 		free(ptr);
-		ptr = NULL;
 	}
 
-	ptr = NULL;
 }
 
 /**

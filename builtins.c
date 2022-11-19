@@ -36,7 +36,9 @@ int check_builtin(general_t *info, char **arguments)
 	int i, size;
 	builtin_t builtins[] = {
 		{"exit", bin_exit},
-		{"env", bin_env}
+		{"env", bin_env},
+		{"setenv", _setenv},
+		{"unsetenv", _unsetenv}
 	};
 
 	size = sizeof(builtins) / sizeof(builtins[0]);

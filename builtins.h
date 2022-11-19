@@ -16,6 +16,9 @@ int number_controller(general_t *info, char *number);
 
 /* env.c */
 void bin_env(general_t *info, char **arguments);
+void _setenv(general_t *, char **);
+void _unsetenv(general_t *, char **);
+int _putenv(char **);
 
 /* echo.c */
 void bin_echo(general_t *info, char **arguments);

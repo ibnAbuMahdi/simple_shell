@@ -103,3 +103,24 @@ char *join_words(char *word1, char *word2, char *word3, const char *sep)
 
 	return (aux);
 }
+
+/**
+ * count - counts args
+ * @args: the args
+ * Return: no of args
+ */
+
+size_t count(char **args)
+{
+	size_t i = 0;
+
+	if (!args)
+		return (i);
+	while (args[i++])
+		;
+	return (i);
+}
+
+
+
+

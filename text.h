@@ -27,6 +27,7 @@ char *to_string(int number);
 int is_numerical(unsigned int n);
 int _atoi(char *s);
 int contains_letter(char *s);
+size_t count(char **);
 
 /* printers.c */
 int _putchar_to_fd(char l, int fd);
