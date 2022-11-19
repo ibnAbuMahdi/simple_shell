@@ -39,7 +39,10 @@ void _setenv(general_t *info, char **args)
 	if (!name || count(args) > 3)
 		return;
 	if (count(args) == 2)
+	{
 		printenv();
+		return;
+	}
 	while (environ[i])
 	{
 		temp = _strdup(environ[i]);
@@ -50,7 +53,6 @@ void _setenv(general_t *info, char **args)
 			_strcat(aux, "=");
 			_strcat(aux, args[2]);
 			environ[i] = aux;
-			printenv();
 		}
 		free(temp);
 		i++;
