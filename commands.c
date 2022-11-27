@@ -60,11 +60,10 @@ void analyze(char **arguments, general_t *info, char *buff)
  *
  */
 
-void process_log_cmd(char **and_args, char **or_args, general_t *info, char *args)
+void process_log_cmd(char **and_args, char **or_args, general_t *info)
 {
 	size_t and_len, or_len, and_s = _strlen(and_args[0]), or_s = _strlen(or_args[0]), max_len, a = 0, o = 0, op = 2, and_err = 1, prv;
 	char **done_list, **temp, *or_p = NULL, *or_t = NULL;
-	(void) args;
 
 	and_len = count(and_args);
 	or_len = count(or_args);

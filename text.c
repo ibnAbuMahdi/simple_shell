@@ -49,7 +49,7 @@ char *read_prompt()
  **/
 void start_prompt(general_t *info)
 {
-	char **args, *buff, *temp, *temp1, *temp2, *path, **and_args, **or_args;
+	char **args, *buff, *temp, *temp1, *path, **and_args, **or_args;
 	size_t i, or_s, and_s;
 
 	signal(SIGINT, sigintHandler);
@@ -75,13 +75,12 @@ void start_prompt(general_t *info)
 			{
 				temp = _strdup(args[i]);
 				temp1 = _strdup(args[i]);
-				temp2 = _strdup(args[i]);
 				and_args = split_words(temp, "&&");
 				or_args = split_words(temp1, "||");
 				or_s = count(or_args);
 				and_s = count(and_args);
 				or_s == 1 && and_s == 1 ? process_cmd(info, args[i]) :
-					process_log_cmd(and_args, or_args, info, temp2);
+					process_log_cmd(and_args, or_args, info);
 				i++;
 				free_memory_pp((void *) and_args);
 				free_memory_pp((void *) or_args);

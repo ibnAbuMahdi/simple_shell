@@ -18,7 +18,7 @@ extern char **environ;
 
 /* commands.c */
 void analyze(char **arguments, general_t *info, char *buff);
-void process_log_cmd(char **, char **, general_t *, char *);
+void process_log_cmd(char **, char **, general_t *);
 int done(char *, char **);
 void add_to_done(char **, char *);
 
