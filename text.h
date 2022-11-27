@@ -43,7 +43,7 @@ int print_err(char *msg);
 /* tokenization.c */
 char **split_words(char *line, const char *sep);
 char *join_words(char *word1, char *word2, char *word3, const char *sep);
-
+char *rem_space(char *);
 /* patterns.c */
 void analyze_patterns(general_t *info, char **arguments);
 char *pattern_handler(general_t *info, char *string);

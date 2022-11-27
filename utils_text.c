@@ -10,7 +10,8 @@
 int _strlen(char *msg)
 {
 	int i;
-
+	if (!msg)
+		return (0);
 	for (i = 0; msg[i] != '\0'; i++)
 		;
 

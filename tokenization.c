@@ -121,6 +121,48 @@ size_t count(char **args)
 	return (i);
 }
 
+/**
+ *
+ */
 
+char *rem_space(char *s)
+{
+	size_t i = 0, j = 0, start = 0, len;
+	char *o;
+
+	if (!s)
+		return (NULL);
+	o = malloc(_strlen(s) + 1);
+	if (!o)
+		return (s);
+	while (s[i])
+	{
+		if (s[i] != ' ' && s[i] != '\t' && !start)
+		{
+			o[j] = s[i];
+			start = 1;
+			j++;
+		}
+		else if (start)
+		{
+			o[j] = s[i];
+			j++;
+		}
+	
+		i++;
+	}
+	o[j] = '\0';
+	len = j > 0 ? j - 1 : 0;
+	while (o[len])
+	{
+		if (o[len] == ' ' || o[len] == '\t' || o[len] == '\n')
+			o[len] = '\0';
+		else
+			break;
+		if (len > 0)
+			len--;
+	}
+	return (o);
+}
 
 

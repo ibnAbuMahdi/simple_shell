@@ -49,17 +49,15 @@ char *read_prompt()
  **/
 void start_prompt(general_t *info)
 {
-	char **arguments, **args, *buff, *path;
-	size_t i;
+	char **args, *buff, *temp, *temp1, *temp2, *path, **and_args, **or_args;
+	size_t i, or_s, and_s;
 
 	signal(SIGINT, sigintHandler);
 	while (1)
 	{
 		prompt(info);
-
 		path = _getenv("PATH");
 		is_current_path(path, info);
-
 		info->environment = path;
 		buff = read_prompt();
 		if (buff == NULL)
@@ -68,7 +66,6 @@ void start_prompt(general_t *info)
 			free(path);
 			break;
 		}
-
 		info->n_commands++;
 		if (buff[0] != '\n')
 		{
@@ -76,24 +73,43 @@ void start_prompt(general_t *info)
 			args = split_words(buff, ";");
 			while (args[i])
 			{
-				arguments = split_words(args[i], " \t\n");
-			
-				info->arguments = arguments;
-				info->buffer = args[i];
-				analyze_patterns(info, arguments);
-				analyze(arguments, info, args[i]);
-
-				free_memory_pp((void *) arguments);
+				temp = _strdup(args[i]);
+				temp1 = _strdup(args[i]);
+				temp2 = _strdup(args[i]);
+				and_args = split_words(temp, "&&");
+				or_args = split_words(temp1, "||");
+				or_s = count(or_args);
+				and_s = count(and_args);
+				or_s == 1 && and_s == 1 ? process_cmd(info, args[i]) :
+					process_log_cmd(and_args, or_args, info, temp2);
 				i++;
+				free_memory_pp((void *) and_args);
+				free_memory_pp((void *) or_args);
+				free(temp);
+				free(temp1);
 			}
 			free_memory_pp((void *) args);
-
 		}
-
 		free_memory_p((void *) buff);
 		free_memory_p((void *) path);
 	}
+}
 
+/**
+ *
+ */
+
+void process_cmd(general_t *info, char *args)
+{
+	char **arguments;
+
+	arguments = split_words(args, " \t\n");
+	info->arguments = arguments;
+	info->buffer = args;
+	analyze_patterns(info, arguments);
+	analyze(arguments, info, args);
+
+	free_memory_pp((void *) arguments);
 }
 
 /**

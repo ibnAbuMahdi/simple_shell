@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 	info->pid = getpid();
 	info->status_code = 0;
 	info->n_commands = 0;
+	info->error_code = 0;
 	info->argc = argc;
 	info->argv = argv;
 	info->mode = isatty(STDIN) == INTERACTIVE;

@@ -1,6 +1,7 @@
 #include "error.h"
 #include "general.h"
 #include "text.h"
+#include <stdio.h>
 
 /**
  * message_selector - Select the message that match with the error_code
@@ -54,7 +55,6 @@ void error(general_t *info)
 
 	message = join_words(aux, info->command, message, ": ");
 	print_err(message);
-
 	free(message);
 	free(number);
 	free(aux);
